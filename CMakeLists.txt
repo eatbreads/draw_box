@@ -28,6 +28,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         trianglewidget.h trianglewidget.cpp
         rectangle.h rectangle.cpp
         res.qrc
+        README.md
 
 
     )

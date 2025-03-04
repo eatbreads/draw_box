@@ -18,9 +18,12 @@ protected:
     /**
      * @brief 初始化 OpenGL 资源（如 VBO、VAO、IBO 和 Shader）
      */
-    void initializeGL() override {
+    void initializeGL() override
+    {
         // 初始化 OpenGL 函数
         initializeOpenGLFunctions();
+
+
 
         // 定义矩形的顶点数据 (x, y, z, r, g, b)
         GLfloat vertices[] = {
@@ -30,6 +33,7 @@ protected:
             0.5f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f, // 右上角（蓝色）
             -0.5f,  0.5f, 0.0f, 1.0f, 1.0f, 0.0f  // 左上角（黄色）
         };
+
 
         // 定义索引数据，用于绘制两个三角形形成矩形
         GLuint indices[] = {

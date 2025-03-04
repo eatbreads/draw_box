@@ -17,7 +17,6 @@ third_party/
 node_modules/
 
 # 资源文件（根据需要保留 .qrc）
-*.qrc
 
 # Qt Designer 生成的 UI 文件（建议保留，若无需跟踪可注释）
 
