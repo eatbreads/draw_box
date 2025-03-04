@@ -7,9 +7,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     //myopenglptr = new MyOpenGLWidget(this);
-    rectangle = new OpenGLRectangle(this);
+    //rectangle = new OpenGLRectangle(this);
+    trectangle = new TexturedRectangle_s(this);
     //triangleptr = new TriangleWidget(this);
-    setCentralWidget(rectangle);
+    setCentralWidget(trectangle);
     //myopenglptr->update();  // 手动触发重绘
 
 }
@@ -21,14 +22,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actiondraw_triggered()
 {
-    rectangle->setDrawRectangle(true);
+    trectangle->setDrawRectangle(true);
 
 }
 
 
 void MainWindow::on_actionclear_triggered()
 {
-    rectangle->clearRectangle();
+    trectangle->clearRectangle();
 }
 
 

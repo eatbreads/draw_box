@@ -5,6 +5,7 @@
 #include "myopenglwidget.h"
 #include "trianglewidget.h"
 #include "rectangle.h"
+#include "texturedrectangle_s.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -28,6 +29,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    TexturedRectangle_s * trectangle;
     OpenGLRectangle * rectangle;
     MyOpenGLWidget *myopenglptr;
     TriangleWidget *triangleptr;
