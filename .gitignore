@@ -1,0 +1,61 @@
+# 编译输出目录
+build/
+bin/
+*.o
+*.so
+*.dll
+*.exe
+*.a
+
+# Qt 资源编译中间文件
+*.qm
+
+# 第三方库相关（根据实际项目调整）
+third_party/
+*.lib
+*.egg
+node_modules/
+
+# 资源文件（根据需要保留 .qrc）
+*.qrc
+
+# Qt Designer 生成的 UI 文件（建议保留，若无需跟踪可注释）
+*.ui
+
+# 操作系统特定文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE 相关配置（根据使用的 IDE 调整）
+.vscode/
+.idea/
+*.user
+*.project
+*.qwtresrc
+*.qsc
+
+# 编程工具生成文件
+*~
+#*#
+*.swp
+*.swo
+*.bak
+
+# 测试与日志
+tests/
+*.log
+*.tmp
+
+# 其他忽略项
+*.ini  # 根据项目需求决定是否保留
+*.local  # 本地配置文件
+*.pytest_cache/  # 如果使用 pytest
+
+# CMake 项目相关（若使用）
+CMakeCache.txt
+cmake_build/
+CMakeFiles/
+
+# 示例：排除特定目录下的所有内容
+!src/third_party/  # 反向包含，如需跟踪某个第三方库
