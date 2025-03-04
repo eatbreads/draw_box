@@ -7,7 +7,8 @@
 #include <QOpenGLBuffer>
 #include <QOpenGLVertexArrayObject>
 
-class OpenGLRectangle : public QOpenGLWidget, protected QOpenGLFunctions {
+class OpenGLRectangle : public QOpenGLWidget, protected QOpenGLFunctions
+{
     Q_OBJECT
 public:
     OpenGLRectangle(QWidget *parent = nullptr) : QOpenGLWidget(parent) {}
