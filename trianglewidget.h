@@ -40,8 +40,10 @@ protected:
                                               "void main() {\n"
                                               "   FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
                                               "}");
-        shaderProgram.link();
 
+
+
+        shaderProgram.link();
         // 定义三角形的顶点数据
         GLfloat vertices[] = {
             0.0f,  0.5f, 0.0f,   // 上

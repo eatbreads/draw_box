@@ -20,7 +20,6 @@ node_modules/
 *.qrc
 
 # Qt Designer 生成的 UI 文件（建议保留，若无需跟踪可注释）
-*.ui
 
 # 操作系统特定文件
 .DS_Store
