@@ -11,8 +11,27 @@ class OpenGLRectangle : public QOpenGLWidget, protected QOpenGLFunctions
 {
     Q_OBJECT
 public:
-    OpenGLRectangle(QWidget *parent = nullptr) : QOpenGLWidget(parent) {}
+    OpenGLRectangle(QWidget *parent = nullptr) : QOpenGLWidget(parent), m_drawRectangle(false){}
     ~OpenGLRectangle() { cleanup(); }
+
+    void setDrawRectangle(bool enabled) {
+        m_drawRectangle = enabled;
+        update();  // 触发重绘
+    }
+
+    /**
+     * @brief 清空矩形数据
+     */
+    void clearRectangle() {
+        m_drawRectangle = false;
+        // makeCurrent();
+        // vbo.destroy();
+        // ibo.destroy();
+        // vao.destroy();
+        // shaderProgram.removeAllShaders();
+        // doneCurrent();
+        update();  // 触发重绘
+    }
 
 protected:
     /**
@@ -30,7 +49,7 @@ protected:
             // 位置坐标      // 颜色（RGB）
             -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, // 左下角（红色）
             0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, // 右下角（绿色）
-            0.5f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f, // 右上角（蓝色）
+            0.5f,  0.5f, 0.0f, 0.5f, 0.0f, 1.0f, // 右上角（蓝色）
             -0.5f,  0.5f, 0.0f, 1.0f, 1.0f, 0.0f  // 左上角（黄色）
         };
 
@@ -75,22 +94,23 @@ protected:
         shaderProgram.release();
     }
 
-    /**
-     * @brief 负责渲染矩形
-     */
-    void paintGL() override {
-        // 清空颜色和深度缓冲区
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // 绑定着色器程序
-        shaderProgram.bind();
-        // 绑定 VAO
-        vao.bind();
-        // 通过索引缓冲区绘制矩形
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
-        // 释放 VAO 和 Shader
-        vao.release();
-        shaderProgram.release();
+    void paintGL() override {
+        if(m_drawRectangle)
+        {
+            // 清空颜色和深度缓冲区
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+            // 绑定着色器程序
+            shaderProgram.bind();
+            // 绑定 VAO
+            vao.bind();
+            // 通过索引缓冲区绘制矩形
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+            // 释放 VAO 和 Shader
+            vao.release();
+            shaderProgram.release();
+        }
     }
 
     void resizeGL(int w, int h) override {
@@ -102,6 +122,8 @@ private:
     QOpenGLBuffer vbo{QOpenGLBuffer::VertexBuffer}; // 顶点缓冲对象
     QOpenGLBuffer ibo{QOpenGLBuffer::IndexBuffer};  // 索引缓冲对象
     QOpenGLVertexArrayObject vao; // 顶点数组对象
+
+    bool m_drawRectangle;  // 控制是否绘制的标志
 
     /**
      * @brief 清理 OpenGL 资源
