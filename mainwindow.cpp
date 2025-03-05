@@ -43,3 +43,9 @@ void MainWindow::on_actionclear_triggered()
 //         rectangle->clearRectangle();
 // }
 
+
+void MainWindow::on_actiondraw_triggered(bool checked)
+{
+
+}
+

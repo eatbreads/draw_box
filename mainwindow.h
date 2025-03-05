@@ -27,6 +27,8 @@ private slots:
 
     //void on_actiondraw_triggered(bool checked);
 
+    void on_actiondraw_triggered(bool checked);
+
 private:
     Ui::MainWindow *ui;
     TexturedRectangle_s * trectangle;
